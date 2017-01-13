@@ -36,7 +36,8 @@ function optionsframework_options() {
 		'four' => __('4', 'options_framework_theme'),
 		'five' => __('5', 'options_framework_theme'),
 		'six' => __('6', 'options_framework_theme'),
-		'seven' => __('7', 'options_framework_theme')
+		'seven' => __('7', 'options_framework_theme'),
+		'eight' => __('8', 'options_framework_theme')
 	);
 		
 
@@ -124,27 +125,6 @@ function optionsframework_options() {
 		'desc' => __('最佳高度尺寸40px。', 'options_framework_theme'),
 		'id' => 'akina_logo',
 		'type' => 'upload');	
-	
-	$options[] = array(
-		'name' => __('自定义关键词和描述', 'options_framework_theme'),
-		'desc' => __('开启之后可自定义填写关键词和描述', 'options_framework_theme'),
-		'id' => 'akina_meta',
-		'std' => '0',
-		'type' => 'checkbox');
-		
-	$options[] = array(
-		'name' => __('网站关键词', 'options_framework_theme'),
-		'desc' => __('各关键字间用半角逗号","分割，数量在5个以内最佳。', 'options_framework_theme'),
-		'id' => 'akina_meta_keywords',
-		'std' => '',
-		'type' => 'text');	
-		
-	$options[] = array(
-		'name' => __('网站描述', 'options_framework_theme'),
-		'desc' => __('用简洁的文字描述本站点，字数建议在120个字以内。', 'options_framework_theme'),
-		'id' => 'akina_meta_description',
-		'std' => '',
-		'type' => 'text');
 
 	$options[] = array(
 		'name' => __('展开导航菜单', 'options_framework_theme'),
@@ -225,27 +205,6 @@ function optionsframework_options() {
 		'type' => 'textarea');
 
 	$options[] = array(
-		'name' => __('站长统计', 'options_framework_theme'),
-		'desc' => __('填写统计代码，将被隐藏，如需要在下方填写链接地址', 'options_framework_theme'),
-		'id' => 'site_statistics',
-		'std' => '',
-		'type' => 'textarea');
-
-	$options[] = array(
-		'name' => __('站长统计后台地址', 'options_framework_theme'),
-		'desc' => __('填写查看统计数据的链接', 'options_framework_theme'),
-		'id' => 'site_statistics_link',
-		'std' => '',
-		'type' => 'text');
-
-	$options[] = array(
-		'name' => __('网站地图地址', 'options_framework_theme'),
-		'desc' => __('Sitemap生成的地图链接', 'options_framework_theme'),
-		'id' => 'site_map_link',
-		'std' => '',
-		'type' => 'text');
-
-	$options[] = array(
 		'name' => __('自定义CSS样式', 'options_framework_theme'),
 		'desc' => __('直接填写CSS代码，不需要写style标签', 'options_framework_theme'),
 		'id' => 'site_custom_style',
@@ -255,11 +214,11 @@ function optionsframework_options() {
 		
 	//第一屏
 	$options[] = array(
-		'name' => __('第一屏', 'options_framework_theme'),
+		'name' => __('首页', 'options_framework_theme'),
 		'type' => 'heading');
 		
 	$options[] = array(
-		'name' => __('总开关', 'options_framework_theme'),
+		'name' => __('头部大图', 'options_framework_theme'),
 		'desc' => __('默认开启，勾选关闭', 'options_framework_theme'),
 		'id' => 'head_focus',
 		'std' => '0',
@@ -273,7 +232,7 @@ function optionsframework_options() {
 		'type' => 'checkbox');
 
 	$options[] = array(
-		'name' => __('全屏显示', 'options_framework_theme'),
+		'name' => __('全屏显示头部图片', 'options_framework_theme'),
 		'desc' => __('默认开启，勾选关闭', 'options_framework_theme'),
 		'id' => 'focus_height',
 		'std' => '0',
@@ -583,7 +542,73 @@ function optionsframework_options() {
 		'id' => 'feature3_link',
 		'std' => '#',
 		'type' => 'text');
+
 	
+	//SEO设置
+	$options[] = array(
+		'name' => __('SEO', 'options_framework_theme'),
+		'type' => 'heading' );
+
+$options[] = array(
+		'name' => __('自定义关键词和描述', 'options_framework_theme'),
+		'desc' => __('开启之后可自定义填写关键词和描述', 'options_framework_theme'),
+		'id' => 'akina_meta',
+		'std' => '0',
+		'type' => 'checkbox');
+		
+	$options[] = array(
+		'name' => __('网站关键词', 'options_framework_theme'),
+		'desc' => __('各关键字间用半角逗号","分割，数量在5个以内最佳。', 'options_framework_theme'),
+		'id' => 'akina_meta_keywords',
+		'std' => '',
+		'type' => 'text');	
+		
+	$options[] = array(
+		'name' => __('网站描述', 'options_framework_theme'),
+		'desc' => __('用简洁的文字描述本站点，字数建议在120个字以内。', 'options_framework_theme'),
+		'id' => 'akina_meta_description',
+		'std' => '',
+		'type' => 'text');
+
+$options[]=array(
+        'name'  => ('外链自动GO跳转'),
+        'desc'  => ('启用 '),
+        'id'    => 'git_go',
+        'type'  => 'checkbox');
+
+ $options[] =array(
+        'name'  => ('外链自动添加nofollow'),
+        'desc'  => ('启用'),
+        'id'    => 'git_nofollow',
+        'type'  => 'checkbox');
+
+  $options[] =array(
+        'name'  => ('Robot.txt优化'),
+        'desc'  => ('启用(只对搜索引擎开放首页，页面，文章页)'),
+        'id'    => 'git_robot_b',
+        'type'  => 'checkbox');
+
+   $options[] = array(
+        'name'  => ('主动推送接口地址，填写本项即开启推送'),
+        'desc'  => ('在百度站长平台获取主动推送接口地址(<a class="button-primary" rel="nofollow" href="http://zhanzhang.baidu.com/linksubmit/index" target="_blank">主动推送接口地址</a>)'),
+        'id'    => 'git_sitemap_api',
+        'type'  => 'text',
+        'std'   => '');
+
+	$options[] = array(
+		'name' => __('站长统计', 'options_framework_theme'),
+		'desc' => __('填写统计代码，将被隐藏，如需要在下方填写链接地址', 'options_framework_theme'),
+		'id' => 'site_statistics',
+		'std' => '',
+		'type' => 'textarea');
+
+	$options[] = array(
+		'name' => __('站长统计后台地址', 'options_framework_theme'),
+		'desc' => __('填写查看统计数据的链接', 'options_framework_theme'),
+		'id' => 'site_statistics_link',
+		'std' => '',
+		'type' => 'text');
+
 
 	//其他
 	$options[] = array(
