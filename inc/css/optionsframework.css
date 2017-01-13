@@ -80,11 +80,17 @@ a#options-group-5-tab:before {
 
 a#options-group-6-tab:before {
     font-family: "dashicons";
+    content: "\f179";
+    float: left;
+}
+
+a#options-group-7-tab:before {
+    font-family: "dashicons";
     content: "\f105";
     float: left;
 }
 
-a#options-group-7-tab:before { /*前台登陆*/
+a#options-group-8-tab:before { /*前台登陆*/
     font-family: "dashicons";
     content: "\f110";
     float: left;
