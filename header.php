@@ -46,6 +46,18 @@ if (akina_option('akina_meta') == true) {
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
 <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/images/favicon.ico"/> 
+<?php
+if (get_option('git_robot_b')): ?>
+<?php
+    if (is_single() || is_page() || is_home()): ?>
+<meta name="robots" content="index,follow" />
+<?php
+    else: ?>
+<meta name="robots" content="noindex,follow" />
+<?php
+    endif; ?>
+<?php
+endif; ?>
 <?php wp_head(); ?>
 <script type="text/javascript">
 if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
