@@ -431,14 +431,12 @@ function optionsframework_options() {
 		'id' => 'sina',
 		'std' => '',
 		'type' => 'text');
-		
+	
 	$options[] = array(
-		'name' => __('腾讯QQ', 'options_framework_theme'),
-		'desc' => __('QQ号码', 'options_framework_theme'),
+		'name' => __('QQ', 'options_framework_theme'),
+		'desc' => __('QQ二维码', 'options_framework_theme'),
 		'id' => 'qq',
-		'std' => '',
-		'type' => 'text');
-		
+		'type' => 'upload');
 	$options[] = array(
 		'name' => __('QQ空间', 'options_framework_theme'),
 		'desc' => __('QQ空间地址', 'options_framework_theme'),
