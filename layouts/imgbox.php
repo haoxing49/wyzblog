@@ -23,7 +23,11 @@ $bg_style = akina_option('focus_height') ? 'background-position: center center;b
 		<li><a href="<?php echo akina_option('sina', ''); ?>" target="_blank" class="social-sina" title="sina"><img src="<?php bloginfo('template_url'); ?>/images/sns/sina.png"/></a></li>
 		<?php } ?>
 		<?php if (akina_option('qq')){ ?>
-		<li class="qq"><a href="//wpa.qq.com/msgrd?v=3&uin=<?php echo akina_option('qq', ''); ?>&site=qq&menu=yes" target="_blank" title="Initiate chat ?"><img src="<?php bloginfo('template_url'); ?>/images/sns/qq.png"/></a></li>
+		<li class="qq"><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/sns/qq.png"/></a>
+		<div class="wechatInner">
+				<img src="<?php echo akina_option('qq', ''); ?>" alt="企鹅号">
+			</div>
+		</li>
 		<?php } ?>	
 		<?php if (akina_option('qzone')){ ?>
 		<li><a href="<?php echo akina_option('qzone', ''); ?>" target="_blank" class="social-qzone" title="qzone"><img src="<?php bloginfo('template_url'); ?>/images/sns/qzone.png"/></a></li>
