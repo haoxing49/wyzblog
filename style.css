@@ -3378,22 +3378,24 @@ li.feature-2 {
 }
 
 .notice {
-    padding: 20px;
-    border: 1px dashed #E6E6E6;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
-    color: #969696;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    margin-top: 60px;
-    background: #FBFBFB;
+padding: 12px 0px 0px 0px;
+border: 1px dashed #E6E6E6;
+font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+color: #969696;
+position: relative;
+display: inline-block;
+width: 100%;
+margin-top: 60px;
+background: #FBFBFB;
+border-radius: 10px;
+height: 50px;
 }
 
 .notice i {
-    float: left;
-    color: #999;
-    font-size: 18px;
-    padding-right: 10px;
+float: left;
+color: #999;
+font-size: 18px;
+padding: 0 5px 0 10px;
 }
 
 .notice-content {
@@ -3602,6 +3604,49 @@ li.feature-2 {
 }
 
 .wechat:hover .wechatInner {
+    -webkit-transform: translate3d(0,10px,0);
+    transform: translate3d(0,10px,0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.qq {
+    width: 35px;
+    height: 35px;
+    position: relative;
+}
+
+.qqInner img {
+    border-radius: 0px;
+    width: 121px;
+    height: auto;
+    padding: 0;
+    background: none;
+}
+
+.qqInner {
+    width: 121px;
+    height: 121px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    top: 40px;
+    left: -40px;
+    -webkit-transform: translate3d(0,50px,0);
+    transform: translate3d(0,50px,0);
+    opacity: 0;
+}
+
+.qqInner {
+    position: absolute;
+    border-radius: 8px;
+    transition: .7s all ease;
+    -webkit-transition: .7s all ease;
+    -moz-transition: .7s all linear;
+    -o-transition: .7s all ease;
+    -ms-transition: .7s all ease;
+}
+
+.qq:hover .wechatInner {
     -webkit-transform: translate3d(0,10px,0);
     transform: translate3d(0,10px,0);
     opacity: 1;
