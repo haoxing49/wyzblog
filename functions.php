@@ -656,5 +656,5 @@ function my_custom_init() {
 							'supports' => array(
 							'editor','author') );
 	
-	register_post_type('talk',$args); 
+	register_post_type('zone',$args); 
 	}
