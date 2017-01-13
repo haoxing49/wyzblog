@@ -13,9 +13,10 @@
 	<?php if(akina_option('patternimg') || !get_post_thumbnail_id(get_the_ID())) { ?>
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<p class="entry-census"><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?>&nbsp;&nbsp;<?php echo get_post_views(get_the_ID()); ?> 次阅读&nbsp;&nbsp;<?php
+		<p class="entry-census"><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?>
+		<?php  the_time('(n-j)');?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo get_post_views(get_the_ID()); ?> 次阅读&nbsp;&nbsp;&nbsp;&nbsp;<?php
     $zhuanzai = get_post_meta($post->ID, 'wyzblog_zhuanzai_name', true);
-    if ( $zhuanzai ) echo '<span class="muted">来源：<a rel="nofollow" target="_blank" href="' . get_post_meta($post->ID, 'wyzblog_zhuanzai_link', true) . '">' .get_post_meta($post->ID, 'wyzblog_zhuanzai_name', true) . '</a></span>'; ?></p>
+    if ( $zhuanzai ) echo '<span class="muted">来源:<a rel="nofollow" target="_blank" href="' . get_post_meta($post->ID, 'wyzblog_zhuanzai_link', true) . '">' .get_post_meta($post->ID, 'wyzblog_zhuanzai_name', true) . '</a></span>'; ?></p>
 		<hr>
 	</header><!-- .entry-header -->
 	<?php } ?>
