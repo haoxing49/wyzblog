@@ -655,3 +655,74 @@ function my_custom_init() {
 	register_post_type('zone',$args); 
 	}
 	include ('inc/theme-metabox.php');
+	//给外部链接加上跳转
+if(get_option('git_go')):
+function git_go_url($content){
+	preg_match_all('/<a(.*?)href="(.*?)"(.*?)>/',$content,$matches);
+	if($matches && !is_page('about')){
+		foreach($matches[2] as $val){
+			if(strpos($val,'://')!==false && strpos($val,home_url())===false && !preg_match('/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i',$val)){
+			    if(get_option('git_pagehtml_b')) {
+			        $content=str_replace("href=\"$val\"", "href=\"".home_url()."/go.html/?url=$val\" ",$content);
+			    }else{
+			        $content=str_replace("href=\"$val\"", "href=\"".home_url()."/go/?url=$val\" ",$content);
+			    }
+			}
+		}
+	}
+	return $content;
+}
+add_filter('the_content','git_go_url',999);
+endif;
+//自动给文章以及评论添加nofollow属性
+if(get_option('git_nofollow')):
+function git_auto_nofollow( $content ) {
+    $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>";
+    if(preg_match_all("/$regexp/siU", $content, $matches, PREG_SET_ORDER)) {
+        if( !empty($matches) ) {
+
+            $srcUrl = get_option('siteurl');
+            for ($i=0; $i < count($matches); $i++)
+            {
+                $tag = $matches[$i][0];
+                $tag2 = $matches[$i][0];
+                $url = $matches[$i][0];
+                $noFollow = '';
+                $pattern = '/target\s*=\s*"\s*_blank\s*"/';
+                preg_match($pattern, $tag2, $match, PREG_OFFSET_CAPTURE);
+                if( count($match) < 1 )
+                    $noFollow .= ' target="_blank" ';
+                $pattern = '/rel\s*=\s*"\s*[n|d]ofollow\s*"/';
+                preg_match($pattern, $tag2, $match, PREG_OFFSET_CAPTURE);
+                if( count($match) < 1 )
+                    $noFollow .= ' rel="nofollow" ';
+                $pos = strpos($url,$srcUrl);
+                if ($pos === false) {
+                    $tag = rtrim ($tag,'>');
+                    $tag .= $noFollow.'>';
+                    $content = str_replace($tag2,$tag,$content);
+                }
+            }
+        }
+    }
+
+    $content = str_replace(']]>', ']]>', $content);
+    return $content;
+}
+add_filter( 'the_content', 'git_auto_nofollow');
+endif;
+//百度主动推送
+if(!function_exists('Baidu_Submit') &&get_option('git_sitemap_api') ){
+    function Baidu_Submit($post_ID) {
+        if(get_post_meta($post_ID,'git_baidu_submit',true) == 1) return;
+        $url = get_permalink($post_ID);
+        $api = get_option('git_sitemap_api');
+        $request = new WP_Http;
+        $result = $request->request( $api , array( 'method' => 'POST', 'body' => $url , 'headers' => 'Content-Type: text/plain') );
+        $result = json_decode($result['body'],true);
+        if (array_key_exists('success',$result)) {
+            add_post_meta($post_ID, 'git_baidu_submit', 1, true);
+        }
+    }
+    add_action('publish_post', 'Baidu_Submit', 0);
+}
