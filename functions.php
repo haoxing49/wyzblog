@@ -617,10 +617,6 @@ function comment_mail_notify($comment_id){
 }
 add_action('comment_post', 'comment_mail_notify');
 
-
-//code end 
-
-
 /*插入表格按钮*/
 function appthemes_add_quicktags() {
 ?><script type="text/javascript">// <![CDATA[ 
@@ -658,3 +654,4 @@ function my_custom_init() {
 	
 	register_post_type('zone',$args); 
 	}
+	include ('inc/theme-metabox.php');
