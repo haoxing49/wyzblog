@@ -513,18 +513,13 @@ function download($atts, $content = null) {
 return '<a class="download" href="'.$content.'" rel="external"  
 target="_blank" title="下载地址">  
 <span><i class="iconfont down">&#xe69f;</i>Download</span></a>';}  
-add_shortcode("download", "download"); 
-
-add_action('after_wp_tiny_mce', 'bolo_after_wp_tiny_mce');  
-function bolo_after_wp_tiny_mce($mce_settings) {  
-?>  
-<script type="text/javascript">  
-QTags.addButton( 'download', '下载按钮', "[download]下载地址[/download]" );
-function bolo_QTnextpage_arg1() {
-}  
-</script>  
-<?php } 
-
+add_shortcode("download", "download");  
+function my_quicktags() {
+    wp_enqueue_script('my_quicktags', get_stylesheet_directory_uri() . '/js/my_quicktags.js', array(
+        'quicktags'
+    ));
+};
+add_action('admin_print_scripts', 'my_quicktags');
 
 /*
  * 后台登录页
@@ -617,14 +612,7 @@ function comment_mail_notify($comment_id){
 }
 add_action('comment_post', 'comment_mail_notify');
 
-/*插入表格按钮*/
-function appthemes_add_quicktags() {
-?><script type="text/javascript">// <![CDATA[ 
-QTags.addButton( 'tables', '表格按钮', '<div class="table-container"><table><tbody><tr><th>Header 1</th><th>Header 2</th><th>Header 3</th><th>Header 4</th><th>Header 5</th><th>Header 6</th><th>Header 7</th><th>Header 8</th></tr><tr><td>row1_cell1</td><td>row1_cell2</td><td>row1_cell3</td><td>row1_cell4</td><td>row1_cell5</td><td>row1_cell6</td><td>row1_cell7</td><td>row1_cell8</td></tr><tr><td>row2_cell1</td><td>row2_cell2</td><td>row2_cell3</td><td>row2_cell4</td><td>row2_cell5</td><td>row2_cell6</td><td>row2_cell7</td><td>row2_cell8</td></tr><tr><td>row3_cell1</td><td>row3_cell2</td><td>row3_cell3</td><td>row3_cell4</td><td>row3_cell5</td><td>row3_cell6</td><td>row3_cell7</td><td>row3_cell8</td></tr></tbody></table></div>' );
-// ]]></script><?php } add_action('admin_print_footer_scripts', 'appthemes_add_quicktags' );
-
 add_action('init', 'my_custom_init');
-
 function my_custom_init() {
 	$labels = array( 'name' => '碎语', 
 							'singular_name' => 'singularname',
